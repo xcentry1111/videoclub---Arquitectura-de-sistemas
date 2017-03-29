@@ -1,0 +1,7 @@
+ESTE DOCUMENTO ES PARA DEFINIR LO ROLES Y LOS PERMISOS EN EL APLICATIVO.
+
+-Todos pueden registrar clientes
+
+
+
+

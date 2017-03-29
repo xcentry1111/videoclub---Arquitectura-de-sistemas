@@ -1,0 +1,315 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10/08/2016, 07:39:29 AM
+    Author     : Marlon
+*/
+.color-banner{
+    background-color: #003366;
+    color:white;
+
+}
+
+.color-texto{
+    color:white;
+    font-family: 'Baloo Paaji', cursive;
+}
+
+.titulo{
+    color:white;
+    font-family: 'Lobster', cursive;
+    font-size: 200%;
+    font-weight: bold;
+}
+
+
+
+html{
+    position: relative; 
+    min-height: 100%;
+}
+
+body{
+    margin: 0 0 65px;
+    color:#1a1a1a;
+}
+
+footer{
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    height: 65px;
+}
+
+
+.colorfooter{
+    color:white;
+    background-color:#0d0d0d
+}
+
+.texto-footer{
+    font-family: 'Oswald', sans-serif;  
+    font-size: 120%;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+
+.barra-estilos{
+    margin-top : -30px;
+    margin-bottom: 60px;
+}
+
+
+.fuente-video{
+    font-family: 'Lobster', cursive;
+    color:#99bbff;
+}
+
+.botones{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+    font-weight:600;
+}
+
+
+.mover-texto{
+    margin-top: -30px;
+    margin-bottom: -30px;
+}
+
+.fuente-ini-cerrar{
+    font-family: 'Baloo Chettan', cursive;
+    font-size: 17px;
+}
+
+
+.boton-cerrar {
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    color: white;
+    text-shadow: 0 1px 0 #fff;
+
+}
+.boton-cerrar:hover,
+.boton-cerrar:focus {
+    color: #e7e7e7;
+    text-decoration: none;
+    cursor: pointer;
+    filter: alpha(opacity=50);
+    opacity: .5;
+}
+button.boton-cerrar {
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+}
+
+.organizar-boton{
+    padding: 15px;
+    margin-top: -2px;
+}
+
+
+.no{
+    outline: none;
+}
+
+.fuente-modal{
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.espacio-boton{
+    margin-top: 30px;
+}
+
+.titulo-forms{
+    font-family: 'Passion One', cursive;
+}
+
+.bordes-form{
+    border:solid 0.1px #e3e3e3;
+    /* background-color: #ecf0f1;*/
+
+}
+
+a:link, a:hover, a:visited, a:active, a {
+    text-decoration:none;
+    /*color:white;*/
+    font-size: 16px;
+}
+
+.texto-barra-d{
+    font-family: 'Roboto', sans-serif;
+}
+
+.img-banner{
+    height:230px;
+    width: 1700px;
+}
+
+.botones-head{
+    font-family: 'Days One', sans-serif;
+}
+
+.boton-home:hover{
+    color:white;
+    background-color: #e6b800;
+    border-radius: 25px;
+}
+
+.imagen-fender{
+    width: 260px;
+
+}
+
+.logo-header{
+
+    margin-right: 40px;
+
+}
+
+
+/*ESTILOS PAG 404 ERROR*/
+.cont-error {
+    color: black;
+    font: 100% "Lato", sans-serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+}
+
+.center {
+    text-align: center;
+}
+
+.header-error {
+    font-size: 13rem;
+    font-weight: 700;
+    margin: 2% 0 2% 0;
+    text-shadow: 0px 3px 0px #7f8c8d;
+}
+
+
+.error {
+    margin: -70px 0 2% 0;
+    font-size: 7.4rem;
+    text-shadow: 0px 3px 0px #7f8c8d;
+    font-weight: 100;
+}
+
+.ups{
+    font-size: 3.4rem;
+}
+
+.header-error-login {
+    font-size: 6rem;
+    font-weight: 700;
+    margin: 2% 0 2% 0;
+    text-shadow: 0px 3px 0px #7f8c8d;
+}
+
+.error-login-p {
+    margin: -50px 0 2% 0;
+    font-size: 6.4rem;
+    text-shadow: 0px 3px 0px #7f8c8d;
+    font-weight: 100;
+}
+
+.ups-log{
+    font-size: 3.4rem;
+    color:#c5230f;
+    font-weight: bold;
+}
+
+.img-quienes{
+    width: 300px;
+    margin-top: 40px;
+}
+
+.texto-quienes{
+    text-align : justify;
+}
+
+.color-body-contact{
+    background-color: #e6e6e6;
+}
+
+.color-body-quienes{
+    background-color: #f2f2f2;
+}
+
+.texto-acerca{
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.titulo-acerca{
+    font-size: 22px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.img-perro-cine{
+    width: 400px;
+    height: 335px;
+}
+
+.has-feedback label~.form-control-feedback {
+    margin-right: 8px;
+}
+
+
+.tamano-expiro{
+    width: 300px;
+}
+/*CIERRE ESTILOS PAG 404 ERROR*/
+
+
+
+
+
+.popupCell {
+    padding-left: 50px;
+    padding-top: 18px;
+    text-decoration: none;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid white;
+}
+
+.popupItem {
+    color: black;
+    text-decoration: none;
+    background-color: white;
+    padding: 10px 20px;
+    border-left: 1px solid #ddd;
+    
+}
+
+.popupItem:hover {
+    color: black;
+    text-decoration: none;
+    background-color: #007fff;
+    padding: 10px 20px;
+    border-left: 1px solid white;
+}
+
+table a:not(.btn), .table a:not(.btn) {
+    text-decoration: none;
+}
+
+.tamano-regresa{
+    font-size: 25px;
+}
+
+.tamano-regresa a{
+   font-size: 25px; 
+}
