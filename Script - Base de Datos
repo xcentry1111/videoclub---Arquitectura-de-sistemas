@@ -1,0 +1,226 @@
+-------------------------------------------------
+CREAR TABLAS BASE DE DATOS MYSQL
+-------------------------------------------------
+
+CREATE TABLE Clientes (
+  id INTEGER AUTO_INCREMENT NOT NULL,
+  nombre VARCHAR(30) NOT NULL,
+  apellido VARCHAR(30) NOT NULL,
+  fecha_nacimiento DATE NOT NULL,
+  tel VARCHAR(11) NOT NULL,
+  email VARCHAR(30) NOT NULL,
+  Carnet_id INTEGER NOT NULL,
+  documento VARCHAR(30) NOT NULL,
+  ciudad VARCHAR(50) NOT NULL,
+  direccion VARCHAR(30) NOT NULL,
+  user_id INTEGER NOT NULL,
+  foto BLOB,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE Carnets (
+  id INTEGER AUTO_INCREMENT NOT NULL,
+  Numero INTEGER NOT NULL,
+  fecha_inicio DATE NOT NULL,
+  fecha_termino DATE NOT NULL,
+  vencimiento BINARY NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE Empleados (
+  id INTEGER AUTO_INCREMENT NOT NULL,
+  nombre VARCHAR(30) NOT NULL,
+  apellido VARCHAR(30) NOT NULL,
+  tel VARCHAR(11) NOT NULL,
+  email VARCHAR(30) NOT NULL,
+  cargo VARCHAR(20) NOT NULL,
+  documento VARCHAR(25) NOT NULL,
+  fecha_inicio DATE NOT NULL,
+  user_id INTEGER NOT NULL,
+  PRIMARY KEY (id)
+);
+
+		
+CREATE TABLE Prestamos (
+  id INTEGER  AUTO_INCREMENT NOT NULL,
+  Cliente_id INTEGER NOT NULL,
+  Pelicula_id INTEGER NOT NULL,
+  fecha_devolucion DATE NOT NULL,
+  pago INT NOT NULL,
+  Empleado_id INTEGER NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE Peliculas (
+  id INTEGER AUTO_INCREMENT NOT NULL,
+  nombre VARCHAR(30) NOT NULL,
+  genero_id INT NOT NULL,
+  duracion INTEGER NOT NULL,
+  estado VARCHAR(50) NOT NULL,
+  ejemplar INTEGER NOT NULL,
+  descripcion VARCHAR(50) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE Sanciones (
+  id INTEGER AUTO_INCREMENT NOT NULL,
+  Cliente_id INTEGER NOT NULL,
+  fecha_sancion DATE NOT NULL,
+  multa INTEGER NOT NULL,
+  duracion_sancion INTEGER NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE Reservas (
+  id INTEGER AUTO_INCREMENT NOT NULL,
+  Cliente_id INTEGER NOT NULL,
+  fecha_reserva DATE NOT NULL,
+  cantidad_peliculas INTEGER NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE Generos (
+  id INTEGER AUTO_INCREMENT NOT NULL,
+  nombre VARCHAR(30) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE Devoluciones (
+  id INTEGER AUTO_INCREMENT NOT NULL,
+  Prestamo_id INTEGER NOT NULL,
+  estado_pelicula INTEGER NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE Reportes (
+  id INTEGER AUTO_INCREMENT NOT NULL,
+  Prestamos_id INTEGER NOT NULL,
+  Devoluciones_id INTEGER NOT NULL,
+  Sanciones_id INTEGER NOT NULL,
+  Cliente_id INTEGER NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE Sugerencias (
+  id INTEGER AUTO_INCREMENT NOT NULL,
+  nombre_pelicula DATE NOT NULL,
+  descripcion MEDIUMTEXT NOT NULL,
+ Cliente_id INTEGER NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE Liquidaciones (
+  id INTEGER AUTO_INCREMENT NOT NULL,
+  Empleado_id INTEGER NOT NULL,
+  dias_laborados INTEGER NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE Users (
+  id INTEGER AUTO_INCREMENT NOT NULL,
+  Usuario VARCHAR(30) NOT NULL,
+  Rol VARCHAR(30) NOT NULL,
+  Contrasena VARCHAR(30) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+ALTER TABLE Clientes ADD FOREIGN KEY (Carnet_id) REFERENCES Carnets (id);
+ALTER TABLE Clientes ADD FOREIGN KEY (user_id) REFERENCES Users (id);
+ALTER TABLE Empleados ADD FOREIGN KEY (user_id) REFERENCES Users (id);
+ALTER TABLE Prestamos ADD FOREIGN KEY (Cliente_id) REFERENCES Clientes (id);
+ALTER TABLE Prestamos ADD FOREIGN KEY (Pelicula_id) REFERENCES Peliculas (id);
+ALTER TABLE Prestamos ADD FOREIGN KEY (Empleado_id) REFERENCES Empleados (id);
+ALTER TABLE Peliculas ADD FOREIGN KEY (genero_id) REFERENCES Generos (id);
+ALTER TABLE Sanciones ADD FOREIGN KEY (Cliente_id) REFERENCES Clientes (id);
+ALTER TABLE Reservas ADD FOREIGN KEY (Cliente_id) REFERENCES Clientes (id);
+ALTER TABLE Devoluciones ADD FOREIGN KEY (Prestamo_id) REFERENCES Prestamos (id);
+ALTER TABLE Reportes ADD FOREIGN KEY (Prestamos_id) REFERENCES Prestamos (id);
+ALTER TABLE Reportes ADD FOREIGN KEY (Devoluciones_id) REFERENCES Devoluciones (id);
+ALTER TABLE Reportes ADD FOREIGN KEY (Sanciones_id) REFERENCES Sanciones (id);
+ALTER TABLE Reportes ADD FOREIGN KEY (Cliente_id) REFERENCES Clientes (id);
+ALTER TABLE Sugerencias ADD FOREIGN KEY (Cliente_id) REFERENCES Clientes (id);
+ALTER TABLE Liquidaciones ADD FOREIGN KEY (Empleado_id) REFERENCES Empleados (id);
+
+
+-----------------------------------------------------------
+INSERT A LAS TABLAS
+-----------------------------------------------------------
+
+Insert into Users (id,Usuario,Rol,Contrasena)values(1,"andres","Admin","123");
+Insert into Users (id,Usuario,Rol,Contrasena)values(2,"juan","Cliente","123");
+
+
+Insert into Users (id,Usuario,Rol,Contrasena)values(4,"gonzalo","Empleado","123");
+Insert into Users (id,Usuario,Rol,Contrasena)values(5,"carmen","Empleado","123");
+Insert into Users (id,Usuario,Rol,Contrasena)values(6,"jose","Empleado","123");
+Insert into Users (id,Usuario,Rol,Contrasena)values(7,"raul01","Empleado","123");
+Insert into Users (id,Usuario,Rol,Contrasena)values(8,"andres99","Empleado","123");
+Insert into Users (id,Usuario,Rol,Contrasena)values(9,"Tiberio","Empleado","123");
+Insert into Users (id,Usuario,Rol,Contrasena)values(10,"luisito12","Empleado","123");
+
+Insert into Users (id,Usuario,Rol,Contrasena)values(11,"maria","Cliente","123");
+Insert into Users (id,Usuario,Rol,Contrasena)values(12,"miguel","Cliente","123");
+Insert into Users (id,Usuario,Rol,Contrasena)values(13,"william78","Cliente","123");
+Insert into Users (id,Usuario,Rol,Contrasena)values(14,"wilder","Cliente","123");
+Insert into Users (id,Usuario,Rol,Contrasena)values(15,"ricardo","Cliente","123");
+Insert into Users (id,Usuario,Rol,Contrasena)values(16,"felipe","Cliente","123");
+Insert into Users (id,Usuario,Rol,Contrasena)values(17,"jorge","Cliente","123");
+Insert into Users (id,Usuario,Rol,Contrasena)values(18,"pablo05","Cliente","123");
+
+insert into Empleados(id,nombre,apellido,tel, email, cargo, documento, fecha_inicio, user_id)values(1,"Marlon","Urriago","3761202","maup@gmail.com","Vendedor","10424578",'2016/07/25',1);
+insert into Empleados(id,nombre,apellido,tel, email, cargo, documento, fecha_inicio, user_id)values(2,"Gonzalo","Gomez","2813636","gonzo@misena.edu.co","Gerente","3367892",'2015/04/16',4);
+insert into Empleados(id,nombre,apellido,tel, email, cargo, documento, fecha_inicio, user_id)values(3,"Carmen","Serrano","3828487","carserra@gmail.com","Cajero","70325714",'2015/03/09',5);
+insert into Empleados(id,nombre,apellido,tel, email, cargo, documento, fecha_inicio, user_id)values(4,"Jose","Alvarez","3726962","jose0170@hotmail.com","Vendedor","10428975",'2016/02/11',6);
+insert into Empleados(id,nombre,apellido,tel, email, cargo, documento, fecha_inicio, user_id)values(5,"Raul","Betancur","3737102","raulbeta45@gmail.com","Cajero","70546987",'2016/08/06',7);
+insert into Empleados(id,nombre,apellido,tel, email, cargo, documento, fecha_inicio, user_id)values(6,"Andres","Gonzalez","3717640","andre05@yahoo.es","Vendedor","30124897",'2015/10/07',8);
+insert into Empleados(id,nombre,apellido,tel, email, cargo, documento, fecha_inicio, user_id)values(7,"Tiberio","Cruz","2786898","tibec25@misena.edu.co","Cajero","103645678",'2016/12/03',9);
+insert into Empleados(id,nombre,apellido,tel, email, cargo, documento, fecha_inicio, user_id)values(8,"Luisito","Lopez","4442132","luislo98@gmail.com","Vendedor","32598789",'2016/11/01',10);
+
+
+
+Insert into Carnets (id,Numero,fecha_inicio,fecha_termino,vencimiento)values(1,456789,'2010/02/12','2011/04/05',0);
+Insert into Carnets (id,Numero,fecha_inicio,fecha_termino,vencimiento)values(2,123459,'2010/02/12','2011/04/05',0);
+Insert into Carnets (id,Numero,fecha_inicio,fecha_termino,vencimiento)values(3,988978,'2010/02/12','2011/04/05',0);
+Insert into Carnets (id,Numero,fecha_inicio,fecha_termino,vencimiento)values(4,789451,'2010/02/12','2011/04/05',0);
+Insert into Carnets (id,Numero,fecha_inicio,fecha_termino,vencimiento)values(5,333155,'2010/02/12','2011/04/05',0);
+Insert into Carnets (id,Numero,fecha_inicio,fecha_termino,vencimiento)values(6,120001,'2010/02/12','2011/04/05',0);
+Insert into Carnets (id,Numero,fecha_inicio,fecha_termino,vencimiento)values(7,948950,'2010/02/12','2011/04/05',0);
+Insert into Carnets (id,Numero,fecha_inicio,fecha_termino,vencimiento)values(8,212369,'2010/02/12','2011/04/05',0);
+
+
+INSERT INTO Clientes(id,nombre,apellido,fecha_nacimiento,tel,email,Carnet_id,documento,ciudad, direccion,foto,user_id)VALUES(1,"Maria","Rodriguez",'1993-07-15',"2444598","maria@gmail.com",1,1040123489,"Medellin","carrera 40B",0,11);
+INSERT INTO Clientes(id,nombre,apellido,fecha_nacimiento,tel,email,Carnet_id,documento,ciudad, direccion,foto,user_id)VALUES(2,"Miguel","Bernal",'1980-03-21',"3774598","magil@msena.edu.co",2,70213498,"La Estrella","carrera 50",0,12);
+INSERT INTO Clientes(id,nombre,apellido,fecha_nacimiento,tel,email,Carnet_id,documento,ciudad, direccion,foto,user_id)VALUES(3,"William","Garcia",'1986-08-31',"3712841","william@hotmail.com",3,1036645897,"Itagui","calle 20",0,13);
+INSERT INTO Clientes(id,nombre,apellido,fecha_nacimiento,tel,email,Carnet_id,documento,ciudad, direccion,foto,user_id)VALUES(4,"Wilder","Alvarez",'1976-10-17',"4559877","waalvarez@misena.edu.co",4,702123459,"Medellin","transerval 50",0,14);
+INSERT INTO Clientes(id,nombre,apellido,fecha_nacimiento,tel,email,Carnet_id,documento,ciudad, direccion,foto,user_id)VALUES(5,"Ricardo","Diaz",'1996-01-15',"2778987","richi@yahoo.es",5,26315789,"La Estrella","calle 50",0,15);
+INSERT INTO Clientes(id,nombre,apellido,fecha_nacimiento,tel,email,Carnet_id,documento,ciudad, direccion,foto,user_id)VALUES(6,"Felipe","Aguilar",'1991-12-06',"3697841","pipe1234@gmail.com",6,1042697456,"Sabaneta","carrera 15C",0,16);
+INSERT INTO Clientes(id,nombre,apellido,fecha_nacimiento,tel,email,Carnet_id,documento,ciudad, direccion,foto,user_id)VALUES(7,"Jorge","Borja",'1988-05-05',"3212458","jorge08@hotmail.com",7,103245679,"Itagui","carrera 40N",0,17);
+INSERT INTO Clientes(id,nombre,apellido,fecha_nacimiento,tel,email,Carnet_id,documento,ciudad, direccion,foto,user_id)VALUES(8,"Pablo","Velasquez",'1994-04-30',"5458789","pablovela@gmail.com",8,32569789,"Medellin","calle 60",0,18);
+
+insert into Generos(id,nombre)values(1,"Terror");
+insert into Generos(id,nombre)values(2,"Comedia");
+insert into Generos(id,nombre)values(3,"Suspenso");
+insert into Generos(id,nombre)values(4,"Drama");
+insert into Generos(id,nombre)values(5,"Tragicomedia");
+insert into Generos(id,nombre)values(6,"Melodrama");
+insert into Generos(id,nombre)values(7,"Acción");
+insert into Generos(id,nombre)values(8,"Aventura");
+
+
+insert into Peliculas(id,nombre,genero_id, duracion,estado, ejemplar, descripcion)values(1,"El Resplandor",1,60,"Disponible",1,"Pelicula de Terror");
+insert into Peliculas(id,nombre,genero_id, duracion,estado, ejemplar, descripcion)values(2,"White Chicks",2,80,"Disponible",2,"Pelicula de humor");
+insert into Peliculas(id,nombre,genero_id, duracion,estado, ejemplar, descripcion)values(3,"No Respires",3,40,"Disponible",4,"Estreno en 2016");
+insert into Peliculas(id,nombre,genero_id, duracion,estado, ejemplar, descripcion)values(4,"La Bruja y el leon",4,85,"Disponible",3,"Excelente pelicula");
+insert into Peliculas(id,nombre,genero_id, duracion,estado, ejemplar, descripcion)values(5,"Sentado en la Orilla",5,98,"Disponible",1,"Buen film");
+insert into Peliculas(id,nombre,genero_id, duracion,estado, ejemplar, descripcion)values(6,"Titanic",6,180,"Disponible",5,"Un gran clasico");
+insert into Peliculas(id,nombre,genero_id, duracion,estado, ejemplar, descripcion)values(7,"Rapido y Furioso 5",7,110,"Disponible",2,"Gran pelicula entretenida");
+insert into Peliculas(id,nombre,genero_id, duracion,estado, ejemplar, descripcion)values(8,"Ace Ventura",8,60,"Disponible",1,"Risa garantizada");
+
+
+	
+insert into Prestamos(id,Cliente_id,Pelicula_id,fecha_devolucion, pago, Empleado_id)values(1,1,1,'2016/12/25',10000,1);
+insert into Prestamos(id,Cliente_id,Pelicula_id,fecha_devolucion, pago, Empleado_id)values(2,2,2,'2016/12/16',10000,2);
+insert into Prestamos(id,Cliente_id,Pelicula_id,fecha_devolucion, pago, Empleado_id)values(3,3,3,'2016/12/17',10000,3);
+insert into Prestamos(id,Cliente_id,Pelicula_id,fecha_devolucion, pago, Empleado_id)values(4,4,4,'2016/12/14',10000,4);
+insert into Prestamos(id,Cliente_id,Pelicula_id,fecha_devolucion, pago, Empleado_id)values(5,5,5,'2016/12/11',10000,5);
+insert into Prestamos(id,Cliente_id,Pelicula_id,fecha_devolucion, pago, Empleado_id)values(6,6,6,'2016/12/10',10000,6);
